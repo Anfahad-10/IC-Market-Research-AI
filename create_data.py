@@ -1,8 +1,6 @@
 import pandas as pd
 import random
 
-# 1. Define the "Building Blocks" of our reviews.
-# We want a mix of topics (Battery, Screen, App) and sentiments (Good, Bad).
 topics = {
     "battery": [
         "battery life is amazing", 
@@ -30,31 +28,26 @@ topics = {
     ]
 }
 
-# 2. Generate 500 fake reviews
 data = []
 
 print("Generating synthetic market research data...")
 
 for i in range(500):
-    # Randomly pick a category (e.g., "battery")
     category = random.choice(list(topics.keys()))
-    # Randomly pick a specific feedback text
     text = random.choice(topics[category])
     
-    # We add some "Noise" (random punctuation/case) to make it realistic
-    # Real users don't type perfectly.
     if random.random() > 0.5:
-        text = text.upper() # User shouting
+        text = text.upper()
     if random.random() > 0.7:
-        text = text + "!!!" # User excited/angry
+        text = text + "!!!" 
         
     data.append({
         "Review_ID": i + 1,
         "Customer_Feedback": text,
-        "Category": category # We keep this for checking our accuracy later
+        "Category": category
     })
 
-# 3. Save to CSV
+
 df = pd.DataFrame(data)
 df.to_csv('survey_data.csv', index=False)
 
