@@ -2,6 +2,7 @@ import pandas as pd
 from preprocessor import clean_and_tokenize 
 
 from sentiment_engine import get_sentiment, categorize_sentiment
+from topic_engine import discover_topics
 
 
 def run_pipeline():
@@ -29,6 +30,18 @@ def run_pipeline():
 
     print("\nSentiment Distribution:")
     print(df['Sentiment_Label'].value_counts())
+
+
+
+
+    print("Running AI Topic Discovery...")
+
+    df['Topic_ID'] = discover_topics(df['Cleaned_Data'], num_topics=4)
+
+    print("\nSample with Topics:")
+    print(df[['Cleaned_Data', 'Sentiment_Label', 'Topic_ID']].head())
+
+
     
 
 
@@ -36,6 +49,9 @@ def run_pipeline():
     
     print("\nSample Data:")
     print(df[['Customer_Feedback', 'Cleaned_Data']].head(5))
+
+
+    
     
 
     df.to_csv('processed_data.csv', index=False)

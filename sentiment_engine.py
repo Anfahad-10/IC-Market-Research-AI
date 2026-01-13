@@ -11,6 +11,10 @@ def get_sentiment(text):
     
     return score
 
+
+
+    
+
 def categorize_sentiment(score):
 
     if score > 0.1:
@@ -20,7 +24,8 @@ def categorize_sentiment(score):
     else:
         return "Neutral"
 
-# --- DEBUGGING BLOCK ---
+#debugging block
+
 if __name__ == "__main__":
     test_reviews = [
         "I LOVE this product, it works perfectly!", 
@@ -28,6 +33,8 @@ if __name__ == "__main__":
         "The case is blue." 
     ]
     
+
+
     print("--- Testing Sentiment Engine ---")
     for review in test_reviews:
         s_score = get_sentiment(review)

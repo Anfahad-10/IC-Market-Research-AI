@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Creating a fake dataset
+# creating a fake dataset
 
 data = {
     "Name": ["Fahad", "Renergo"],
